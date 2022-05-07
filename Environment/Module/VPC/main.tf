@@ -4,7 +4,7 @@ data "aws_region" "current" {}
 # Get all AZ data
 data "aws_availability_zones" "azs" {
     # We need only 2 Availability Zones, you can remove this line if want to use All AZs
-    exclude_names = [ "ap-southeast-3c" ] 
+    exclude_names = [ "ap-southeast-1c" ] 
 }
 
 locals {
