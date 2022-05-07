@@ -99,6 +99,16 @@ resource "aws_eks_cluster" "eks" {
   })
 }
 
+# AWS Load Balancer Controller IAM Policy
+resource "aws_iam_policy" "load-balancer-policy" {
+  name        = "AWSLoadBalancerControllerIAMPolicy"
+  path        = "/"
+  description = "AWS LoadBalancer Controller IAM Policy"
+
+  policy = file("iam_policy.json")
+  
+}
+
 resource "aws_iam_role" "node_group_role" {
   name                  = format("%s-node-group-role", lower(aws_eks_cluster.eks.name))
   path                  = "/"
@@ -142,6 +152,11 @@ resource "aws_iam_role_policy_attachment" "node_group_AmazonEKS_CNI_Policy" {
 
 resource "aws_iam_role_policy_attachment" "node_group_CloudWatchAgentServerPolicy" {
   policy_arn = "arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy"
+  role       = aws_iam_role.node_group_role.id
+}
+
+resource "aws_iam_role_policy_attachment" "node_group_AWSLoadBalancerControllerPolicy" {
+  policy_arn = aws_iam_policy.load-balancer-policy.arn
   role       = aws_iam_role.node_group_role.id
 }
 
