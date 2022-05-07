@@ -1,16 +1,15 @@
 variable "vpc_cidr_block" {
-  default = "10.230.0.0/19"
-  type = string
+  description = "CIDR block of the vpc"
 }
 
 variable "public_subnet_cidr_block" {
     type = list
-    default = ["10.230.0.0/24", "10.230.1.0/24", "10.230.2.0/24"]
+    description = "CIDR block for Public Subnet"
 }
 
 variable "eks_private_subnet_cidr_block" {
     type = list
-    default = ["10.230.8.0/22", "10.230.12.0/22", "10.230.16.0/22"]
+    description = "CIDR block for EKS Private Subnet"
 }
 
 variable "env" {
