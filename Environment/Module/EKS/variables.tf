@@ -12,8 +12,8 @@ variable "name" {
 
 variable "instance_types" {
   type        = list
-  description = "VPC Development ID"
-  default     = ["t3.micro"]
+  description = "Instance Types"
+  default     = ["t3.medium"]
 }
 
 variable "vpc_id" {
@@ -34,19 +34,19 @@ variable "eks_subnet_id" {
 variable "desired_size" {
   description = "Desired size of node"
   type        = number
-  default     = 2
+  default     = 3
 }
 
 variable "max_size" {
   description = "Maximum size of node"
   type        = number
-  default = 2
+  default = 6
 }
 
 variable "min_size" {
   description = "Minimum size of node"
   type        = number
-  default     = 1
+  default     = 3
 }
 
 variable "security_group_ids" {
