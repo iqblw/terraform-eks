@@ -9,7 +9,7 @@ terraform {
   backend "s3" {
     bucket          = "**************" //S3 Bucket Name
     key             = "tf/terraform.tfstate"
-    region          = "ap-southeast-3"
+    region          = "ap-southeast-1"
     encrypt         = "true"
     dynamodb_table  = "tf_state_lock" //DynamoDB Table Name    
   }
