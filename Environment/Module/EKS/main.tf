@@ -91,7 +91,7 @@ resource "aws_eks_cluster" "eks" {
     security_group_ids = [
       aws_security_group.security_group.id
     ]
-    subnet_ids = flatten([var.public_subnet_id, var.eks_subnet_id])
+    subnet_ids = flatten([var.eks_subnet_id])
   }
 
   tags = merge({
